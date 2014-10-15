@@ -1,0 +1,6 @@
+[
+    {
+        "package":"full package path",
+        "className":"Class name of the logic module"
+    }
+]
