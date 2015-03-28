@@ -31,6 +31,7 @@ public class Demo {
      * Give the individual connectors the ability to safely close
      * Afterwards stop VM
      */
+    @SuppressWarnings("unused")
     public static void close()
     {
         for(Connector c:ConnectorManager.getInstance().getEntries())

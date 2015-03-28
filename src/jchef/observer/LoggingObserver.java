@@ -1,10 +1,11 @@
 package jchef.observer;
 
 import jchef.connectors.ConnectorManager;
+import jchef.events.Event;
 import jchef.events.EventManager;
 import jchef.exceptions.ManagedObjectNotFoundException;
 
-public abstract class LoggingObserver implements EventObserver {
+public class LoggingObserver implements EventObserver {
 
     /**
      * Constructor
@@ -15,12 +16,17 @@ public abstract class LoggingObserver implements EventObserver {
         EventManager.getInstance().registerObserver(this, events);
     }
 
+    @Override
+    public void handleEvent(Event event) {
+        log(event.toString());
+    }
+
     /**
      * log the given string
      *
      * @param logstring string to log
      */
-    private void log(String logstring)
+    protected void log(String logstring)
     {
         try {
             ConnectorManager.getInstance().getOutput("system", "logger").set(logstring);
